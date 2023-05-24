@@ -8,7 +8,7 @@
 		"label_learning_rate": 0.0025,
 		"num_epochs": 20,
 		"batch_size": 256,
-		"latent_dimensions": 128,
+		"latent_dimensions": 256,
 		"regularizer_constant": 0.001
 	}
 }
