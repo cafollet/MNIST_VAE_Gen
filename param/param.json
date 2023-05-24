@@ -1,6 +1,6 @@
 {
 	"data":{
-        "n_hidden_vae": 256,
+        "n_hidden_vae": 128,
 		"n_hidden_label": 512
 	},
 	"exec":{
@@ -8,7 +8,7 @@
 		"label_learning_rate": 0.0025,
 		"num_epochs": 20,
 		"batch_size": 256,
-		"latent_dimensions": 8,
+		"latent_dimensions": 128,
 		"regularizer_constant": 0.001
 	}
 }
