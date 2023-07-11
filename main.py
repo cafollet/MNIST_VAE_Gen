@@ -189,28 +189,29 @@ if __name__ == '__main__':
                 print("\n Program Exited")
             elif not (num == "0" or num == "1" or num == "2" or num == "3" or num == "4" or num == "5" or num == "6"
                       or num == "7" or num == "8" or num == "9"):
-                print("Please print a number from 0-9")
+                print("\nPlease print a number from 0-9")
             else:
                 dec_label = ""
                 prob = -2
                 try:
-                    while dec_label != num or (num == 0 and prob < -1.8) \
-                            or (num == 1 and prob < -2.05) or (num == 2 and prob < -1.3) or (num == 3 and prob < -1.3) \
-                            or (num == 4 and prob < -1.5) or (num == 5 and prob < -1.6) or (num == 6 and prob < -1.6) \
-                            or (num == 7 and prob < -1.8) or (num == 8 and prob < -1.7) or (num == 9 and prob < -1.8):
+                    while ((dec_label != num)
+                            or (num == 0 and prob < -1.7) or (num == 1 and prob < -2.05) or (num == 2 and prob < -1.2)
+                            or (num == 3 and prob < -1.1) or (num == 4 and prob < -1.4) or (num == 5 and prob < -1.6)
+                            or (num == 6 and prob < -1.4) or (num == 7 and prob < -1.7) or (num == 8 and prob < -1.5)
+                            or (num == 9 and prob < -1.7)):
                         lat_noise = torch.randn(1, d)
                         dec_noise = model.decoder(lat_noise)
                         dec_noise_flat = torch.reshape(dec_noise[0, 0], (1, 784))
                         label, prob = label_model.test(dec_noise_flat)
                         dec_label = f"{label}"
-                        # if dec_label == num:
-                        #     print(prob)
                         dec_noise = dec_noise.numpy()
+                        print(dec_label != num, prob < 2)
                 except KeyboardInterrupt:
                     pass
                 if dec_label != num:
                     print("\n Task Cancelled, try again\n")
                 else:
+                    print(dec_label, prob)
                     fig, ax = plt.subplots(1, 1)
                     ax.imshow(dec_noise[0, 0], cmap='gray')
                     ax.set_title(f"Generated {dec_label}")
