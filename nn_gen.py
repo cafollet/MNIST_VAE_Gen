@@ -104,9 +104,11 @@ class Net(nn.Module):
         return obj_val.item(), train_acc, pred_targets
 
     def test(self, x):
-        max_vals, max_index = self.forward(x).max(dim=1)
+        vals_ind = self.forward(x)
+        max_vals, max_index = vals_ind.max(dim=1)
+        # print("\n\n NEWLINE \n", vals_ind, "\n", max_vals)
         label = max_index.item()
-        return label
+        return label, max_vals.item()
 
 class Decoder(nn.Module):
     """ Decodes the network by applying the same layers and activation functions as the encoder class, \

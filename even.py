@@ -1,3 +1,5 @@
+# Preliminary even selector from MNIST
+
 import numpy as np
 even = np.loadtxt("data/mnist_train.csv", delimiter=",", skiprows=1)
 even_arr = np.empty_like(even)
@@ -10,7 +12,7 @@ for i, x in enumerate(even):
     even_mod = i % 50
     if even_mod == 0:
         print(f"\t{i*100/even_len:.2f}% Done", end='\r')
-print("hello, here is the shape BEFORE", np.shape(even_arr))
+print("shape BEFORE: ", np.shape(even_arr))
 even_arr = np.delete(even_arr, [i for i, x in enumerate(even)], 0)
-print("hello, here is the shape AFTER", np.shape(even_arr))
+print("shape AFTER: ", np.shape(even_arr))
 np.savetxt("data/mnist_train_evens.csv", even_arr, fmt='%.0f', delimiter=' ')

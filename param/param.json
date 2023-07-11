@@ -1,14 +1,16 @@
 {
 	"data":{
+		"_comment": "best: 128, 512",
         "n_hidden_vae": 128,
 		"n_hidden_label": 512
 	},
 	"exec":{
-		"learning_rate": 0.01,
-		"label_learning_rate": 0.0025,
-		"num_epochs": 20,
-		"batch_size": 256,
-		"latent_dimensions": 256,
-		"regularizer_constant": 0.001
+		"_comment": "best: 0.001, 0.005, 15, 100, 16, 0.01",
+		"learning_rate": 0.001,
+		"label_learning_rate": 0.005,
+		"num_epochs": 15,
+		"batch_size": 100,
+		"latent_dimensions": 16,
+		"regularizer_constant": 0.01
 	}
 }
