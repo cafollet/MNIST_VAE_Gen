@@ -121,7 +121,8 @@ class Decoder(nn.Module):
         self.fc6 = nn.Linear(hidden_layer, conv_out_size3)
         self.rev_conv3 = nn.ConvTranspose2d(conv_chans3, conv_chans2, 3, stride=conv_stride, output_padding=0)
         self.rev_batch2 = nn.BatchNorm2d(conv_chans2)
-        self.rev_conv2 = nn.ConvTranspose2d(conv_chans2, conv_chans1, 3, stride=conv_stride, padding=1, output_padding=1)
+        self.rev_conv2 = nn.ConvTranspose2d(conv_chans2,
+                                            conv_chans1, 3, stride=conv_stride, padding=1, output_padding=1)
         self.rev_batch1 = nn.BatchNorm2d(conv_chans1)
         self.rev_conv1 = nn.ConvTranspose2d(conv_chans1, 1, 3, stride=conv_stride, padding=1, output_padding=1)
 

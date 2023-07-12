@@ -116,9 +116,11 @@ if __name__ == '__main__':
         for i, batch in enumerate(range(0, dataset_size, batch_size)):
             batch_end = batch + batch_size
             batch_conv = batch_conv_set[batch:batch_end]
-            train_loss, train_val = train_epoch(model, batch_conv, optim, loss, kl_reg_constant, 'gen', batch, batch_end)
+            train_loss, train_val = train_epoch(model,
+                                                batch_conv, optim, loss, kl_reg_constant, 'gen', batch, batch_end)
             train_loss_sum += train_loss  # for averages
-            label_val, label_acc = train_epoch(label_model, data, label_optim, label_loss, kl_reg_constant, 'label', batch, batch_end)
+            label_val, label_acc = train_epoch(label_model, data,
+                                               label_optim, label_loss, kl_reg_constant, 'label', batch, batch_end)
             label_val_sum += label_val  # for averages
             label_acc_sum += label_acc  # for averages
             obj_vals.append(train_val)
